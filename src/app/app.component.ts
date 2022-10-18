@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PoolCarz';
+  title:string="angular";
+  isAuthenticated!:boolean;//!->to avoid initialization errors
+  submitted=false;
+  username!:string;
+  password!:string;
+  onSubmit(name:string,password:string)
+  {
+    this.submitted=true;
+    this.username=name;
+    if(name==="admin" && password==="admin")
+    {
+      this.isAuthenticated=true;
+    }
+    else{
+      this.isAuthenticated=false;
+    }
+  }
 }

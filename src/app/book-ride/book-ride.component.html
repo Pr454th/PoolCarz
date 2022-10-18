@@ -1,0 +1,67 @@
+<div class="container d-flex justify-content-center">
+    <div class="card w-75 mt-1 p-1">
+        <div class="row m-1 rounded" id="titleBox">
+            <h3 style="font-size: 40px;">Book Ride</h3>
+        </div>
+        <div class="row p-1 mt-2">
+            <p class="card-text">
+            Pool Carz is an online application which enable users to share rides with others. You can either book a ride or offer a ride. Did
+            we mention that this app is advertisement free ? To add on top of that its free of cost I So what are vou waiting for ? Check out
+            the rides avalable and start PCingll.
+            </p>
+        </div>
+        <div *ngIf="!flag">
+            <div class="row justify-content-center mt-2">
+                <button class="btn btn-primary w-25 m-1" (click)="onClickRides()">Show All Rides</button>
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-primary w-25 m-1">Offer A Ride!</button>
+            </div>
+        </div>
+        <div *ngIf="flag" class="mt-2">
+            <div class="row justify-content-center m-1">
+                <div class="col-3">
+                    <button class="btn btn-primary w-100" (click)="onClickRides()">Show All Rides</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary  w-100">To Office</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary  w-100">From Office</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary  w-100">Others</button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <p>Please select a ride!</p>
+                </div>
+            </div>
+            <div class="row m-1">
+                <div class="col">
+                    <table class="table table-bordered">
+                    <thead>
+                            <tr>
+                            <th scope="col">Start Point</th>
+                            <th scope="col">End Point</th>
+                            <th scope="col">Seats Available</th>
+                            </tr>
+                    </thead>
+                    <tbody *ngFor="let ride of rides;">
+                            <tr appRidehover>
+                                <td>{{ride.pickUp}}</td>
+                                <td>{{ride.destination}}</td>
+                                <td>{{ride.seatsLeft}}</td>
+                            </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-2">
+                <button class="btn btn-primary w-25 m-1">Offer A Ride!</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
