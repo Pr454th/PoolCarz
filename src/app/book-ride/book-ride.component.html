@@ -25,16 +25,16 @@
         <div *ngIf="flag" class="mt-2">
             <div class="row justify-content-center m-1">
                 <div class="col-md-3 mb-1">
-                    <button class="btn btn-primary w-100" (click)="onClickRides()">Show All Rides</button>
+                    <button class="btn btn-primary w-100" [style.backgroundColor]="(option==='all')?'green':'blue'" (click)="onClickRides()">Show All Rides</button>
                 </div>
                 <div class="col-md-3 mb-1">
-                    <button class="btn btn-primary  w-100">To Office</button>
+                    <button class="btn btn-primary  w-100" [style.backgroundColor]="(option==='toOffice')?'green':'blue'" (click)="filterPlace('toOffice');">To Office</button>
                 </div>
                 <div class="col-md-3 mb-1">
-                    <button class="btn btn-primary  w-100">From Office</button>
+                    <button class="btn btn-primary  w-100" [style.backgroundColor]="(option==='fromOffice')?'green':'blue'" (click)="filterPlace('fromOffice');">From Office</button>
                 </div>
                 <div class="col-md-3 mb-1">
-                    <button class="btn btn-primary  w-100">Others</button>
+                    <button class="btn btn-primary  w-100" [style.backgroundColor]="(option==='Others')?'green':'blue'" (click)="filterPlace('Others');">Others</button>
                 </div>
             </div>
             <div class="row mt-2">
@@ -53,7 +53,7 @@
                                     <th scope="col">Seats Available</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let ride of rides;">
+                            <tbody *ngFor="let ride of rides| ridefilter:option">
                                 <tr appRidehover>
                                     <td>{{ride.pickUp}}</td>
                                     <td>{{ride.destination}}</td>
@@ -69,7 +69,6 @@
                 <button class="btn btn-primary m-1">Offer A Ride!</button>
                 </div>
             </div>
-        </div>
-        
+        </div>  
     </div>
 </div>

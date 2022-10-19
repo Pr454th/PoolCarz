@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class BookRideComponent implements OnInit {
   flag:boolean=false;
   turn:number=0;
+  public option:string="all";
   constructor() { }
   rides:any[]=[
     {id:1,offerId:"A1",name:"Ride A",car:"101",seatsLeft:3,pickUp:"Vanrose Junction",destination:"Office"},
@@ -25,6 +26,12 @@ export class BookRideComponent implements OnInit {
       this.flag=false;
       this.turn=0;
     }
+  }
+  filterPlace(choice:string)
+  {
+    if(choice==="toOffice") this.option="toOffice";
+    else if(choice==="fromOffice") this.option="fromOffice";
+    else if(choice==="Others") this.option="Others";
   }
 
   ngOnInit(): void {
