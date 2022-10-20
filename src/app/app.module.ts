@@ -9,6 +9,7 @@ import { BookRideComponent } from './book-ride/book-ride.component';
 import { RidehoverDirective } from './ridehover.directive';
 import { FormsModule } from '@angular/forms';
 import { RidefilterPipe } from './ridefilter.pipe';
+import { CourselistComponent } from './courselist/courselist.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RidefilterPipe } from './ridefilter.pipe';
     RepeatDirective,
     BookRideComponent,
     RidehoverDirective,
-    RidefilterPipe
+    RidefilterPipe,
+    CourselistComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { RidefilterPipe } from './ridefilter.pipe';
     FormsModule
   ],
   providers: [],
-  bootstrap: [BookRideComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

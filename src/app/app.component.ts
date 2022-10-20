@@ -8,6 +8,7 @@ import { Login } from './login/login';
 })
 export class AppComponent {
   title:string="angular";
+  message!:string;//child to parent component
   isAuthenticated!:boolean;//!->to avoid initialization errors
   submitted=false;
   username!:string;
@@ -32,5 +33,9 @@ export class AppComponent {
     if(!this.isAuthenticated){
       alert("Invalid! Username or Password")
     }
+  }
+  assignedCourse(x:string)
+  {
+    this.message=x;
   }
 }

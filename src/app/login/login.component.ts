@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AnimateTimings } from '@angular/animations';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   loginTitle:string="Login";
-  twoWayBindtest:string="two way binding check";
+  // twoWayBindtest:string="two way binding check";
   colorName="red";
   constructor() { }
 

@@ -1,4 +1,4 @@
-<div *ngIf="!submitted" class="container">
+<div *ngIf="submitted" class="container">
   <div class="container">
     <div class="row justify-content-center mt-2">
       <div class="card col-md-12 w-50">
@@ -28,7 +28,8 @@
     </div>
   </div>
 </div>
-  <div *ngIf="submitted" class="container">
+<!--parent to child component-->
+  <!-- <div *ngIf="submitted" class="container">
     <div class="row mt-2">
       <div class="col-lg">
         <div *ngIf="isAuthenticated; else failureMsg">
@@ -43,5 +44,23 @@
     <div class="col-3">
       <button type="button" class="btn btn-secondary w-75" (click)="submitted = false">Back</button>
     </div>
+  </div>
+</div> -->
+<div class="container">
+  <div>
+    <h1>Select Course</h1>
+    <select #course (change)="course.value">
+        <option value="python">Python</option>
+        <option value="c">C</option>
+        <option value="R">R</option>
+        <option value="Java">Java</option>
+    </select>
+  </div>
+  <!-- <app-courselist [cName]="course.value"></app-courselist> -->
+</div>
+<div class="container">
+  <div>
+    <app-courselist (OnRegister)="assignedCourse($event)"></app-courselist>
+    <p *ngIf="message">You have choosen {{message}}</p>
   </div>
 </div>
