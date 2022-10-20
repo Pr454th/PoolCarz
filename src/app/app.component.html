@@ -1,4 +1,5 @@
-<div *ngIf="submitted" class="container">
+<!--Login form-->
+<!-- <div *ngIf="!submitted" class="container">
   <div class="container">
     <div class="row justify-content-center mt-2">
       <div class="card col-md-12 w-50">
@@ -27,16 +28,15 @@
       </div>
     </div>
   </div>
-</div>
-<!--parent to child component-->
-  <!-- <div *ngIf="submitted" class="container">
-    <div class="row mt-2">
-      <div class="col-lg">
-        <div *ngIf="isAuthenticated; else failureMsg">
-          <h4 class="display-3">Welcome {{ username | titlecase }}</h4>
-        </div>
+</div> -->
+<!-- <div *ngIf="submitted" class="container">
+  <div class="row mt-2">
+    <div class="col-lg">
+      <div *ngIf="isAuthenticated; else failureMsg">
+        <h4 class="display-3">Welcome {{ username | titlecase }}</h4>
       </div>
     </div>
+  </div>
   <ng-template #failureMsg>
     <h4 class="display-3">Invalid Login !!! Please try again...</h4>
   </ng-template>
@@ -46,7 +46,10 @@
     </div>
   </div>
 </div> -->
-<div class="container">
+
+<!--parent to child component-->
+<!---->
+<!-- <div class="container">
   <div>
     <h1>Select Course</h1>
     <select #course (change)="course.value">
@@ -56,11 +59,27 @@
         <option value="Java">Java</option>
     </select>
   </div>
-  <!-- <app-courselist [cName]="course.value"></app-courselist> -->
+  <app-courselist [cName]="course.value"></app-courselist>
 </div>
+-->
+
+<!--child to parent component-->
+<!-- 
 <div class="container">
   <div>
     <app-courselist (OnRegister)="assignedCourse($event)"></app-courselist>
     <p *ngIf="message">You have choosen {{message}}</p>
+  </div>
+</div> -->
+
+<!--view child child members accessed by parent component-->
+<div class="container">
+  <div class="row">
+    <h1 class="display-3">Accessing child component properties</h1>
+    <input type="text" #ssn>
+    <button class="btn btn-primary m-2" (click)="modify()">Access Form Data</button>
+    <button class="btn btn-success m-2" (click)="startTimer()">Start</button>
+    <button class="btn btn-secondary m-2" (click)="endTimer()">End</button>
+    <app-timer></app-timer>
   </div>
 </div>

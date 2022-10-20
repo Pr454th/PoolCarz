@@ -13,6 +13,7 @@ export class CourselistComponent implements OnInit {
     {id:3,name:"R"},
     {id:4,name:"Java"},
   ];
+  //parent to child
   @Input() set cName(c:string)
   {
     this.course=[];
@@ -24,7 +25,8 @@ export class CourselistComponent implements OnInit {
       }
     }
   }
-@Output() OnRegister=new EventEmitter<string>();
+  //child to parent
+  @Output() OnRegister=new EventEmitter<string>();
   register(courseName:string)
   {
     this.OnRegister.emit(courseName);

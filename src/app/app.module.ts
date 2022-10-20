@@ -10,6 +10,7 @@ import { RidehoverDirective } from './ridehover.directive';
 import { FormsModule } from '@angular/forms';
 import { RidefilterPipe } from './ridefilter.pipe';
 import { CourselistComponent } from './courselist/courselist.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CourselistComponent } from './courselist/courselist.component';
     BookRideComponent,
     RidehoverDirective,
     RidefilterPipe,
-    CourselistComponent
+    CourselistComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
