@@ -1,15 +1,17 @@
 #titleBox{
-    background-color: blue !important;
+    background-color: #0d6efd !important;
     color:white;
-    font-size: 50px;
 }
 table{
     overflow: scroll;
 }
 th
 {
-    background-color: blue;
+    background-color: #0d6efd;
     color:white;
+}
+td,tr{
+    text-align: center;
 }
 tr{
     background-color: lightblue;
@@ -19,5 +21,5 @@ tr{
     color: white;
 } */
 .card{
-    border-color: blue;
+    border-color: #0d6efd;
 }

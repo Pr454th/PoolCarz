@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { RidedetailsComponent } from '../ridedetails/ridedetails.component';
 
 @Component({
   selector: 'app-book-ride',
@@ -27,6 +28,12 @@ export class BookRideComponent implements OnInit {
       this.turn=0;
     }
   }
+  onReset()
+  {
+    this.isRideSelected=false;
+    this.rideid="";
+    this.rdComponent.booked=false;
+  }
   filterPlace(choice:string)
   {
     if(choice==="toOffice") this.option="toOffice";
@@ -34,6 +41,25 @@ export class BookRideComponent implements OnInit {
     else if(choice==="Others") this.option="Others";
   }
 
+  rideDetail:any;
+  isRideSelected:boolean=false;
+  RideSelect(aRide:any)
+  {
+      this.rideDetail=aRide;
+      this.isRideSelected=true;
+  }
+  rideid!:string;
+  bookRide(id:string)
+  {
+    this.rideid=id;
+  }
+  //cancelling the booking and setting booked to false to book again
+  @ViewChild(RidedetailsComponent) rdComponent!:RidedetailsComponent;
+  cancelRide()
+  {
+    this.rideid="";
+    this.rdComponent.booked=false;
+  }
   ngOnInit(): void {
   }
 

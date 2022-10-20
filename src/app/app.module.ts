@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { RidefilterPipe } from './ridefilter.pipe';
 import { CourselistComponent } from './courselist/courselist.component';
 import { TimerComponent } from './timer/timer.component';
+import { RidedetailsComponent } from './ridedetails/ridedetails.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TimerComponent } from './timer/timer.component';
     RidehoverDirective,
     RidefilterPipe,
     CourselistComponent,
-    TimerComponent
+    TimerComponent,
+    RidedetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,6 @@ import { TimerComponent } from './timer/timer.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [BookRideComponent]
 })
 export class AppModule { }

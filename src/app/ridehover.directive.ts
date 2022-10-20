@@ -14,8 +14,12 @@ export class RidehoverDirective {
     this.renderer.setStyle(this.el.nativeElement, 'cursor', 'pointer');
   }
   @HostListener('mouseleave') onMouseLeave() {
-    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'lightblue');
-    this.renderer.setStyle(this.el.nativeElement, 'color', 'black');
+      this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'lightblue');
+      this.renderer.setStyle(this.el.nativeElement, 'color', 'black');
+  }
+  @HostListener('click') onClick()
+  {
+    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', 'green');
   }
 
 }
