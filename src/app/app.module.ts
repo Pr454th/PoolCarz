@@ -13,6 +13,7 @@ import { CourselistComponent } from './courselist/courselist.component';
 import { TimerComponent } from './timer/timer.component';
 import { RidedetailsComponent } from './ridedetails/ridedetails.component';
 import { RegistrationformComponent } from './registrationform/registrationform.component';
+import { RideRegistrationComponent } from './ride-registration/ride-registration.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegistrationformComponent } from './registrationform/registrationform.c
     CourselistComponent,
     TimerComponent,
     RidedetailsComponent,
-    RegistrationformComponent
+    RegistrationformComponent,
+    RideRegistrationComponent
   ],
   imports: [
     BrowserModule,
