@@ -7,11 +7,12 @@ import { LoginComponent } from './login/login.component';
 import { RepeatDirective } from './repeat.directive';
 import { BookRideComponent } from './book-ride/book-ride.component';
 import { RidehoverDirective } from './ridehover.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RidefilterPipe } from './ridefilter.pipe';
 import { CourselistComponent } from './courselist/courselist.component';
 import { TimerComponent } from './timer/timer.component';
 import { RidedetailsComponent } from './ridedetails/ridedetails.component';
+import { RegistrationformComponent } from './registrationform/registrationform.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,16 @@ import { RidedetailsComponent } from './ridedetails/ridedetails.component';
     RidefilterPipe,
     CourselistComponent,
     TimerComponent,
-    RidedetailsComponent
+    RidedetailsComponent,
+    RegistrationformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [BookRideComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
