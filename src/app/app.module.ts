@@ -14,6 +14,8 @@ import { TimerComponent } from './timer/timer.component';
 import { RidedetailsComponent } from './ridedetails/ridedetails.component';
 import { RegistrationformComponent } from './registrationform/registrationform.component';
 import { RideRegistrationComponent } from './ride-registration/ride-registration.component';
+import { BookComponent } from './book/book.component';
+import { ObservableComponent } from './observable/observable.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { RideRegistrationComponent } from './ride-registration/ride-registration
     TimerComponent,
     RidedetailsComponent,
     RegistrationformComponent,
-    RideRegistrationComponent
+    RideRegistrationComponent,
+    BookComponent,
+    ObservableComponent
   ],
   imports: [
     BrowserModule,
