@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { RidedetailsComponent } from '../ridedetails/ridedetails.component';
+import { RideServiceService } from './ride-service.service';
 
 @Component({
   selector: 'app-book-ride',
@@ -10,13 +11,13 @@ export class BookRideComponent implements OnInit {
   flag:boolean=false;
   turn:number=0;
   public option:string="all";
-  constructor() { }
-  rides:any[]=[
-    {id:1,offerId:"A1",name:"Ride A",car:"101",seatsLeft:3,pickUp:"Vanrose Junction",destination:"Office"},
-    {id:2,offerId:"A2",name:"Ride B",car:"102",seatsLeft:2,pickUp:"PTP",destination:"Office"},
-    {id:3,offerId:"A3",name:"Ride C",car:"103",seatsLeft:7,pickUp:"Office",destination:"East-Fort"},
-    {id:4,offerId:"A4",name:"Ride D",car:"104",seatsLeft:5,pickUp:"Office",destination:"Central Mall"}
-  ];
+  constructor(private rideService:RideServiceService) { }
+  // rides:any[]=[
+  //   {id:1,offerId:"A1",name:"Ride A",car:"101",seatsLeft:3,pickUp:"Vanrose Junction",destination:"Office"},
+  //   {id:2,offerId:"A2",name:"Ride B",car:"102",seatsLeft:2,pickUp:"PTP",destination:"Office"},
+  //   {id:3,offerId:"A3",name:"Ride C",car:"103",seatsLeft:7,pickUp:"Office",destination:"East-Fort"},
+  //   {id:4,offerId:"A4",name:"Ride D",car:"104",seatsLeft:5,pickUp:"Office",destination:"Central Mall"}
+  // ];
   onClickRides()
   {
     if(this.turn==0){
@@ -60,7 +61,10 @@ export class BookRideComponent implements OnInit {
     this.rideid="";
     this.rdComponent.booked=false;
   }
+  rides!:any[];
+  err!:string;
   ngOnInit(): void {
+    this.rideService.getRides().subscribe({next:(data)=>this.rides=data,error:(err)=>this.err=err});
   }
-
+  
 }

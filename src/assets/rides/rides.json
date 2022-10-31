@@ -1,0 +1,58 @@
+{
+  "rides": [
+    {
+      "id": 1,
+      "offerId": "A1",
+      "name": "Ride A",
+      "car": "101",
+      "seatsLeft": 3,
+      "pickUp": "Vanrose Junction",
+      "destination": "Office"
+    },
+    {
+      "id": 2,
+      "offerId": "A2",
+      "name": "Ride B",
+      "car": "102",
+      "seatsLeft": 2,
+      "pickUp": "PTP",
+      "destination": "Office"
+    },
+    {
+      "id": 3,
+      "offerId": "A3",
+      "name": "Ride C",
+      "car": "103",
+      "seatsLeft": 7,
+      "pickUp": "Office",
+      "destination": "East-Fort"
+    },
+    {
+      "id": 4,
+      "offerId": "A4",
+      "name": "Ride D",
+      "car": "104",
+      "seatsLeft": 5,
+      "pickUp": "Office",
+      "destination": "Central Mall"
+    },
+    {
+      "id": 8,
+      "offerId": "A1",
+      "name": "Ride A",
+      "car": "101",
+      "seatsLeft": 3,
+      "pickUp": "Vanrose Junction",
+      "destination": "Office"
+    },
+    {
+      "offerId": "HFF",
+      "name": "prasath",
+      "car": "hundai",
+      "seatsLeft": 7,
+      "pickUp": "chennai",
+      "destination": "erode",
+      "id": 9
+    }
+  ]
+}

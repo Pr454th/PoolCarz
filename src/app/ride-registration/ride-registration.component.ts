@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegisterService } from './register.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class RideRegistrationComponent implements OnInit {
   registerForm!:FormGroup;
   submitted!:boolean;
   bcolor:string="white";
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder,private registerService:RegisterService) { }
 
   ngOnInit(){
     this.registerForm=this.formBuilder.group({
@@ -24,6 +25,19 @@ export class RideRegistrationComponent implements OnInit {
       seatsAvailable:[0,this.checkSeats]
     });
   }
+  RidesAdded!:any[];
+  add(){
+    this.submitted=true;
+    this.registerService.addRide({
+      offerId:"HFF",
+      name:this.registerForm.controls['Name'].value,
+      car:this.registerForm.controls['car'].value,
+      seatsLeft:this.registerForm.controls['seatsAvailable'].value,
+      pickUp:this.registerForm.controls['startLocation'].value,
+      destination:this.registerForm.controls['destination'].value
+    }).subscribe();
+  }
+
   checkSeats(n:FormControl):any
   {
     

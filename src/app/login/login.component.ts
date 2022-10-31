@@ -2,6 +2,7 @@ import { AnimateTimings } from '@angular/animations';
 import { Login } from './login';
 import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserServiceService } from './user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,12 @@ export class LoginComponent implements OnInit {
   submitted=false;
   username!:string;
   password!:string;
-  users:Login[]=[
-    {username:"admin",password:"admin"},
-    {username:"prasath",password:"1"},
-    {username:"pradesh",password:"2"},
-  ];
+  // users:Login[]=[
+  //   {username:"admin",password:"admin"},
+  //   {username:"prasath",password:"1"},
+  //   {username:"pradesh",password:"2"},
+  // ];
+  users!:any[];
   inVpassword!:string;
   noUser:boolean=true;
   onSubmit()
@@ -53,13 +55,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm!:FormGroup;
-
-  constructor(private formBuilder:FormBuilder) { }
+  err!:string;
+  constructor(private formBuilder:FormBuilder,private userService:UserServiceService) { }
 
   ngOnInit(){
     this.loginForm=this.formBuilder.group({
       uname:['',Validators.required],
       pcode:['',Validators.required]
+    });
+    this.userService.getUsers().subscribe({
+      next:(data)=>this.users=data,
+      error:(err)=>this.err=err
     })
   }
 
