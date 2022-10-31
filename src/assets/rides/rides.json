@@ -2,57 +2,66 @@
   "rides": [
     {
       "id": 1,
+      "name": "ride a",
       "offerId": "A1",
-      "name": "Ride A",
       "car": "101",
-      "seatsLeft": 3,
+      "seatsLeft": 0,
       "pickUp": "Vanrose Junction",
       "destination": "Office"
     },
     {
       "id": 2,
+      "name": "ride b",
       "offerId": "A2",
-      "name": "Ride B",
       "car": "102",
-      "seatsLeft": 2,
+      "seatsLeft": 0,
       "pickUp": "PTP",
       "destination": "Office"
     },
     {
       "id": 3,
+      "name": "ride c",
       "offerId": "A3",
-      "name": "Ride C",
       "car": "103",
-      "seatsLeft": 7,
+      "seatsLeft": 0,
       "pickUp": "Office",
       "destination": "East-Fort"
     },
     {
       "id": 4,
+      "name": "ride d",
       "offerId": "A4",
-      "name": "Ride D",
       "car": "104",
-      "seatsLeft": 5,
+      "seatsLeft": 0,
       "pickUp": "Office",
       "destination": "Central Mall"
     },
     {
       "id": 8,
+      "name": "ride e",
       "offerId": "A1",
-      "name": "Ride A",
       "car": "101",
-      "seatsLeft": 3,
+      "seatsLeft": 0,
       "pickUp": "Vanrose Junction",
       "destination": "Office"
     },
     {
+      "id": 9,
+      "name": "ride f",
       "offerId": "HFF",
-      "name": "prasath",
       "car": "hundai",
-      "seatsLeft": 7,
+      "seatsLeft": 1,
       "pickUp": "chennai",
-      "destination": "erode",
-      "id": 9
+      "destination": "erode"
+    },
+    {
+      "id": 10,
+      "name": "ganesh",
+      "offerId": 7,
+      "car": "audi",
+      "seatsLeft": 0,
+      "pickUp": "kerala",
+      "destination": "ooty"
     }
   ]
 }

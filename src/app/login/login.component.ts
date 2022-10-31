@@ -3,6 +3,8 @@ import { Login } from './login';
 import { Component, OnInit,Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from './user-service.service';
+import { Router } from '@angular/router';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginTitle:string="Login";
   // twoWayBindtest:string="two way binding check";
   colorName="red";
-
+  
   isAuthenticated!:boolean;//!->to avoid initialization errors
   submitted=false;
   username!:string;
@@ -23,6 +25,12 @@ export class LoginComponent implements OnInit {
   //   {username:"prasath",password:"1"},
   //   {username:"pradesh",password:"2"},
   // ];
+
+  constructor(private formBuilder:FormBuilder,
+    private userService:UserServiceService,
+    private router:Router,
+    private userLog:RestService) { }
+  
   users!:any[];
   inVpassword!:string;
   noUser:boolean=true;
@@ -38,11 +46,14 @@ export class LoginComponent implements OnInit {
         {
           this.isAuthenticated=true;
           alert("Welcome "+this.username);
+          this.userLog.setUser(this.username);
+          this.router.navigate(['/bookride']);
           this.password="";
         }
         else{
           this.inVpassword="Invalid Credentials";
         }
+        this.username="";
       }
     }
     if(this.noUser==true)
@@ -56,7 +67,6 @@ export class LoginComponent implements OnInit {
 
   loginForm!:FormGroup;
   err!:string;
-  constructor(private formBuilder:FormBuilder,private userService:UserServiceService) { }
 
   ngOnInit(){
     this.loginForm=this.formBuilder.group({

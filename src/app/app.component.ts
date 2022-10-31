@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { RestService } from './rest.service';
 import { TimerComponent } from './timer/timer.component';
 
 @Component({
@@ -6,7 +8,7 @@ import { TimerComponent } from './timer/timer.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements DoCheck {
   title:string="angular";
   message!:string;//child to parent component
   assignedCourse(x:string)
@@ -15,6 +17,8 @@ export class AppComponent implements AfterViewInit {
   }
   //viewchild decorator
   @ViewChild(TimerComponent) timercomponent!:TimerComponent;
+  constructor(private userLog:RestService,
+    private route:Router){}
   startTimer()
   {
     this.timercomponent.begin();
@@ -24,13 +28,29 @@ export class AppComponent implements AfterViewInit {
     this.timercomponent.end();
   }
   //view decorator to access data from app/parent component
-  @ViewChild('ssn') ssn!:ElementRef;
+  // @ViewChild('ssn') ssn!:ElementRef;
+  user!:string;
+  option:string="Login";
+  Log(){
+    if(this.user){
+       this.option="Login";
+       this.userLog.removeUser();
+    }
+  }
+  ngDoCheck(){
+    this.user=this.userLog.getUser();
+    if(this.user) this.option="Logout";
+  }
   ngAfterViewInit()
   {
-    this.ssn.nativeElement.style.color="red";
+
   }
-  modify()
-  {
-    this.ssn.nativeElement.style.color="green";
-  }
+  //ngAfterViewInit()
+  // {
+  //   this.ssn.nativeElement.style.color="red";
+  // }
+  // modify()
+  // {
+  //   this.ssn.nativeElement.style.color="green";
+  // }
 }

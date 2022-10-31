@@ -25,17 +25,17 @@ export class RideRegistrationComponent implements OnInit {
       seatsAvailable:[0,this.checkSeats]
     });
   }
-  RidesAdded!:any[];
   add(){
-    this.submitted=true;
     this.registerService.addRide({
-      offerId:"HFF",
+      offerId:Math.floor(Math.random()*100),
       name:this.registerForm.controls['Name'].value,
       car:this.registerForm.controls['car'].value,
       seatsLeft:this.registerForm.controls['seatsAvailable'].value,
       pickUp:this.registerForm.controls['startLocation'].value,
       destination:this.registerForm.controls['destination'].value
-    }).subscribe();
+    }).subscribe({
+      next:()=>this.submitted=true
+    });
   }
 
   checkSeats(n:FormControl):any

@@ -1,5 +1,55 @@
 <!--Login Form-->
+<base href="/">
 <!-- <app-login></app-login> -->
+<div class="container">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">PoolCarz</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="user">
+            <li class="nav-item">
+              <a [routerLink]='["/bookride"]' class="nav-link" routerLinkActive="active">Book Ride</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]='["/ride-register"]' class="nav-link" routerLinkActive="active">Ride Registration</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li> -->
+          </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="!user">
+            <li class="nav-item">
+              </li>
+            <li class="nav-item">
+              </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <a [routerLink]='["/login"]' routerLinkActive="active" (click)="Log()">
+            <button [ngClass]="user?'btn btn-danger':'btn btn-primary'" type="submit" >{{option}}</button>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
 
 <!--Ride Registration form-->
 <!-- <app-ride-registration></app-ride-registration> -->
@@ -11,7 +61,7 @@
 <!-- <app-book></app-book> -->
 
 <!--Observables for asynchronous stream of datas-->
-<app-observable></app-observable>
+<!-- <app-observable></app-observable> -->
 
 <!--Registration form using reactive forms/model based forms-->
 <!-- <app-registrationform></app-registrationform> -->

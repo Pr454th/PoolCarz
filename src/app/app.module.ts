@@ -17,6 +17,8 @@ import { RegistrationformComponent } from './registrationform/registrationform.c
 import { RideRegistrationComponent } from './ride-registration/ride-registration.component';
 import { BookComponent } from './book/book.component';
 import { ObservableComponent } from './observable/observable.component';
+import { RoutingModule } from './routing/routing.module';
+import { PathnotfoundComponent } from './pathnotfound/pathnotfound.component';
 
 @NgModule({
   declarations: [
@@ -32,16 +34,18 @@ import { ObservableComponent } from './observable/observable.component';
     RegistrationformComponent,
     RideRegistrationComponent,
     BookComponent,
-    ObservableComponent
+    ObservableComponent,
+    PathnotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RoutingModule
   ],
   providers: [],
-  bootstrap: [RideRegistrationComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
