@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RestService } from '../rest.service';
 import { RegisterService } from './register.service';
 
 
@@ -14,8 +16,11 @@ export class RideRegistrationComponent implements OnInit {
   registerForm!:FormGroup;
   submitted!:boolean;
   bcolor:string="white";
-  constructor(private formBuilder:FormBuilder,private registerService:RegisterService) { }
-
+  constructor(private formBuilder:FormBuilder,
+    private registerService:RegisterService,
+    private route:Router,
+    private userLog:RestService) { }
+  user!:string;
   ngOnInit(){
     this.registerForm=this.formBuilder.group({
       Name:['',Validators.required],
@@ -24,6 +29,7 @@ export class RideRegistrationComponent implements OnInit {
       car:[],
       seatsAvailable:[0,this.checkSeats]
     });
+    this.user=this.userLog.getUser();
   }
   add(){
     this.registerService.addRide({
@@ -36,6 +42,11 @@ export class RideRegistrationComponent implements OnInit {
     }).subscribe({
       next:()=>this.submitted=true
     });
+  }
+
+  goBack(){
+    this.submitted=false;
+    this.route.navigate(['/bookride']);
   }
 
   checkSeats(n:FormControl):any

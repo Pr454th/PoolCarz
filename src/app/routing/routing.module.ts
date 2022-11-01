@@ -10,6 +10,7 @@ const appRoutes:Routes=[
   {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'ride-register',component:RideRegistrationComponent},
   {path:'bookride',component:BookRideComponent},
+  {path:'offerride',component:RideRegistrationComponent},
   {path:'bookride/:user',component:BookRideComponent},
   {path:'**',component:PathnotfoundComponent}
 ]

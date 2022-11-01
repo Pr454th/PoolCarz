@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../rest.service';
 import { RidedetailsComponent } from '../ridedetails/ridedetails.component';
 import { RideServiceService } from './ride-service.service';
@@ -15,6 +15,7 @@ export class BookRideComponent implements OnInit {
   public option:string="all";
   constructor(private rideService:RideServiceService,
     private route:ActivatedRoute,
+    private router:Router,
     private userLog:RestService) { }
   onClickRides()
   {
@@ -48,28 +49,63 @@ export class BookRideComponent implements OnInit {
   
   rideDetail:any;
   isRideSelected:boolean=false;
+  diffRide:boolean=true;
+  isvalidRide!:boolean;
   RideSelect(aRide:any)
   {
       console.log(aRide.name);
-      if(aRide.seatsLeft>=1){
-        this.rideDetail={id:aRide.id,name:aRide.name,offerId:aRide.offerId,car:aRide.car,seatsLeft:aRide.seatsLeft-1,pickUp:aRide.pickUp,destination:aRide.destination};
-        this.isRideSelected=true;
-        this.rideService.updateSeats({id:aRide.id,name:aRide.name,offerId:aRide.offerId,car:aRide.car,seatsLeft:aRide.seatsLeft-1,pickUp:aRide.pickUp,destination:aRide.destination}).subscribe({
+      if(this.diffRide==false && aRide.id!=this.rideDetail.id){
+        this.rideService.updateSeats({id:this.rideDetail.id,name:this.rideDetail.name,offerId:this.rideDetail.offerId,car:this.rideDetail.car,seatsLeft:this.rideDetail.seatsLeft+1,pickUp:this.rideDetail.pickUp,destination:this.rideDetail.destination}).subscribe({
           next:()=>this.rideService.getRides().subscribe({next:(data)=>this.rides=data,error:(err)=>this.err=err}),
           error:(err)=>console.log(err)
         });
-    }
-    else{
-      alert("No seats available!");
-    }
+      }
+      if(!this.rideDetail || aRide.id!=this.rideDetail.id)
+      {
+        if(this.user!=aRide.name)
+        {
+          if(aRide.seatsLeft>=1){
+            this.rideDetail={id:aRide.id,name:aRide.name,offerId:aRide.offerId,car:aRide.car,seatsLeft:aRide.seatsLeft-1,pickUp:aRide.pickUp,destination:aRide.destination};
+            this.isRideSelected=true;
+            this.rideService.updateSeats({id:aRide.id,name:aRide.name,offerId:aRide.offerId,car:aRide.car,seatsLeft:aRide.seatsLeft-1,pickUp:aRide.pickUp,destination:aRide.destination}).subscribe({
+              next:()=>this.rideService.getRides().subscribe({next:(data)=>this.rides=data,error:(err)=>this.err=err}),
+              error:(err)=>console.log(err)
+            });
+            this.diffRide=false;
+            this.isvalidRide=true;
+          }
+          else{
+            alert("No seats available!");
+          }
+        }
+        else{
+          this.rideDetail={id:aRide.id,name:aRide.name,offerId:aRide.offerId,car:aRide.car,seatsLeft:aRide.seatsLeft,pickUp:aRide.pickUp,destination:aRide.destination};
+          this.isvalidRide=false;
+          this.diffRide=true;
+          this.isRideSelected=true;
+          alert("cannot select your own ride!");
+        }
+      }
+      else{
+        alert("same ride is selected!");
+      }
   }
+
+  offerRide(){
+    this.router.navigate(['/offerride']);
+  }
+
   rideid!:string;
   bookRide(id:string)
   {
     this.rideid=id;
   }
+  chosRide(c:boolean){
+    this.isRideSelected=c;
+  }
   //cancelling the booking and setting booked to false to book again
   @ViewChild(RidedetailsComponent) rdComponent!:RidedetailsComponent;
+  
   cancelRide(cRide:any)
   {
     this.rideid="";
@@ -78,7 +114,9 @@ export class BookRideComponent implements OnInit {
       next:()=>this.rideService.getRides().subscribe({next:(data)=>this.rides=data,error:(err)=>this.err=err}),
       error:(err)=>console.log(err)
     });
+    this.rideDetail="";
     this.rdComponent.booked=false;
+    this.isRideSelected=false;
   }
   rides!:any[];
   err!:string;

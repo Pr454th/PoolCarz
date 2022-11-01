@@ -34,6 +34,12 @@ export class LoginComponent implements OnInit {
   users!:any[];
   inVpassword!:string;
   noUser:boolean=true;
+
+  clear(){
+    this.username="";
+    this.password="";
+  }
+
   onSubmit()
   {
     this.submitted=true;

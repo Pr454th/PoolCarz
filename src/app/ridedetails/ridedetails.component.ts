@@ -12,12 +12,23 @@ export class RidedetailsComponent implements OnInit {
   {
     this.selectedRide=ride;
   }
+  flag!:boolean;
+  @Input() set invalidRide(flag:boolean)
+  {
+    this.flag=flag;
+  }
 
   @Output() bookSelectedRide=new EventEmitter<string>();
   bookRide(sRide:string)
   {
     this.bookSelectedRide.emit(sRide);
     this.booked=true;
+  }
+
+  @Output() closeRide=new EventEmitter<boolean>();
+  // back:boolean=false;
+  backRide(){
+    this.closeRide.emit(false);
   }
   constructor() { }
 
